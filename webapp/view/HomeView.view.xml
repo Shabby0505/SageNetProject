@@ -1,0 +1,238 @@
+<mvc:View
+    controllerName="com.sagenet.zfunctionallocationlookup.controller.HomeView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+
+							<fb:FilterBar id="filterbar" reset="onReset" search="onSearch" >
+						<fb:filterItems>
+							
+								<fb:FilterItem name="FunctionalLocation" label="Functional Location" visibleInFilterBar="true">
+									<fb:control>
+										<Input 
+											id="idFuncLocation"
+											placeholder="Enter Func. Location"
+                                            showSuggestion="false"
+                                            showValueHelp="false"
+                                            >
+                                        </Input>
+									</fb:control>	
+								</fb:FilterItem>
+								 
+								<fb:FilterItem name="Name1" label="Name1">
+									<fb:control>
+										<Input 
+											id="idName1"
+											placeholder="Enter Name1"
+                                            showSuggestion="false"
+                                            showValueHelp="false"
+                                        >
+                                           
+										</Input>
+									</fb:control>				
+								</fb:FilterItem>
+
+                                <fb:FilterItem name="Name2" label="Name2">
+									<fb:control>
+										<Input 
+											id="idName2"
+											placeholder="Enter Name2"
+                                            showSuggestion="false"
+                                            showValueHelp="false"
+                                        >
+                                           
+										</Input>
+									</fb:control>				
+								</fb:FilterItem>
+								
+                                
+                                <fb:FilterItem name="SortField" label="Sort Field">
+									<fb:control>
+										<Input 
+											id="idSortField"
+											placeholder="Enter Sort Field"
+                                            showSuggestion="false"
+                                            showValueHelp="false"
+                                            >
+                                            
+										</Input>
+									</fb:control>				
+								</fb:FilterItem>
+                            
+                                <fb:FilterItem name="Street" label="Street" visibleInFilterBar="true">
+									<fb:control>
+										<Input 
+											id="idStreet"
+											placeholder="Enter Street"
+                                            showSuggestion="false"
+                                            showValueHelp="false"
+                                            >
+                                        </Input>
+									</fb:control>	
+								</fb:FilterItem>
+
+                                <fb:FilterItem name="City" label="City">
+									<fb:control>
+										<Input 
+											id="idCity"
+											placeholder="Enter City"
+                                            showSuggestion="false"
+                                            showValueHelp="false"
+											>
+                                          
+										</Input>
+									</fb:control>				
+								</fb:FilterItem>
+
+                                <fb:FilterItem name="State" label="State">
+									<fb:control>
+										<Input 
+											id="idState"
+                                            width="100%"
+											placeholder="Select State"
+                                            showSuggestion="true"
+                                            showValueHelp="true"
+                                            valueHelpRequest=".onValueHelpRequestState"
+                                            suggestionItems="{/StateData}"
+											>
+                                             <suggestionItems>
+                                                <!-- <core:Item text="{Region}" key="{Region}"/> -->
+                                                <core:ListItem text="{Region}" additionalText="{RegionDescription}" />
+                                            </suggestionItems>
+                                          
+										</Input>
+									</fb:control>				
+								</fb:FilterItem>
+
+                                <fb:FilterItem name="PostalCode" label="Zip">
+									<fb:control>
+										<Input 
+											id="idZip"
+											placeholder="Enter Zip"
+                                            showSuggestion="false"
+                                            showValueHelp="false"
+											>
+                                          
+										</Input>
+									</fb:control>				
+								</fb:FilterItem>
+                            
+
+							</fb:filterItems> 
+						</fb:FilterBar>
+
+                        	<Table id="idSiteTable"
+								mode="None"
+								inset="false"
+                                growing="true"
+                                growingThreshold="20"
+                                updateFinished=".onUpdateFinished"
+								items="{
+									path: '/SiteData',
+									sorter: {
+										path: 'Name1'
+									}}">
+									<headerToolbar>
+										<OverflowToolbar>
+											<Title id="idTableHeader" text="{i18n>masterTitleCount}" level="H2"/>
+											<ToolbarSpacer></ToolbarSpacer>
+                                              <Button
+                                                tooltip="Sort"
+                                                icon="sap-icon://sort"
+                                                press="handleSortButtonPressed"/>
+                                             <Button
+                                                tooltip="Filter"
+                                                icon="sap-icon://filter"
+                                                press="handleFilterButtonPressed"/>
+                                             <Button
+                                                    tooltip="Remove Filter"
+                                                    icon="sap-icon://clear-filter"
+                                                    press="handleRemoveFilterButtonPressed"/>
+											
+										</OverflowToolbar>
+									</headerToolbar>
+                                    <infoToolbar>
+                                        <OverflowToolbar id="vsdFilterBar" visible="false">
+                                            <Text id="vsdFilterLabel" />
+                                        </OverflowToolbar>
+                                    </infoToolbar>
+				
+									<columns>
+										<Column hAlign="Begin">
+											<Text text="Functional Location" />
+										</Column>
+										
+										<Column hAlign="Center">
+											<Text text="Status" />
+										</Column>
+										<Column hAlign="Center">
+											<Text text="Start Date" />
+										</Column>
+										<Column hAlign="Begin"
+											minScreenWidth="Tablet"
+											demandPopin="true"
+                                            popinDisplay="Inline"
+											>
+											<Text text="Name1"  />
+										</Column>
+										<Column hAlign="Begin" 
+                                        minScreenWidth="Tablet"
+											demandPopin="true"
+                                            popinDisplay="Inline">
+											<Text text="Name2(Branch)" />
+										</Column>
+                                        <Column hAlign="Begin" minScreenWidth="Desktop"
+											demandPopin="true"
+                                            popinDisplay="Inline"
+                                            >
+											<Text text="Address" />
+										</Column>
+										<Column hAlign="Center"
+											minScreenWidth="Desktop"
+											demandPopin="true"
+                                            popinDisplay="Inline"
+											>
+											<Text text="Sort Field" />
+										</Column>
+                                        <Column hAlign="End"
+											minScreenWidth="Tablet"
+											demandPopin="true"
+                                            popinDisplay="Inline"
+											>
+											<Text text="Telephone" />
+										</Column>
+									</columns>
+									<items>
+											<ColumnListItem type="Navigation" press="openSiteDetailsDialog">
+												<cells>
+													<ObjectIdentifier
+														title="{FunctionalLocation}"
+														titleActive="true"/>
+													<Text text="{Status}" />
+													<ObjectNumber number="{
+                                                    path: 'StartUpDate',
+                                                    type: 'sap.ui.model.type.String',
+                                                    formatter: 'com.sagenet.zfunctionallocationlookup.utils.formatter.stringToDate'
+                                                    }" />
+                                                    <Text text="{Name1}" />
+													<Text text="{Name2}" />
+													<Text text="{Street},{City},{State},{Country},{PostalCode}" />
+                                                    <Text text="{SortField}" />
+													<Text text="{TelPhone}" />
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+                    <content />
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

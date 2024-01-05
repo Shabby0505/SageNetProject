@@ -1,0 +1,134 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "com.sagenet.zfunctionallocationlookup",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "dataSources": {
+            "SiteService": {
+                "uri": "/sap/opu/odata/sap/ZPS_SITE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "State": {
+                "uri": "/sap/opu/odata/sap/STATE_SEARCH",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "@sap/ux-app-migrator:freestyle",
+            "version": "1.11.2",
+            "toolsId": "d1645171-d96c-4085-98f4-dd742578c749"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.38.31",
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.table": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.sagenet.zfunctionallocationlookup.i18n.i18n"
+                }
+            },
+            "SiteModel": {
+                "dataSource": "SiteService",
+                "preload": true,
+                "settings": {}
+            },
+            "StateModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Auto",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "None"
+                },
+                "dataSource": "State",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.sagenet.zfunctionallocationlookup.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteHomeView",
+                    "pattern": "RouteHomeView",
+                    "target": [
+                        "TargetHomeView"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetHomeView": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "HomeView",
+                    "viewName": "HomeView"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.sagenet.zfunctionallocationlookup.view.HomeView",
+            "type": "XML",
+            "async": true,
+            "id": "HomeView"
+        }
+    }
+}

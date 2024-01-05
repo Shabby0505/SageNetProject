@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="handleFilterDialogConfirm">
+		<filterItems>
+			<ViewSettingsFilterItem key="Status" text="Status" multiSelect="false" 
+                 items="{path: '/Status'}">
+                <items>
+                <ViewSettingsItem key="Status" text="{statusName}"/>
+                </items>
+            </ViewSettingsFilterItem>
+
+             <ViewSettingsFilterItem key="FunctionalLocation" text="Functional Location" multiSelect="false" 
+                 items="{path: '/FuncLoc'}">
+                <items>
+                <ViewSettingsItem key="FunctionalLocation" text="{funcLocName}"/>
+                </items>
+            </ViewSettingsFilterItem>
+
+             <ViewSettingsFilterItem key="Name1" text="Name1" multiSelect="false" 
+                 items="{path: '/Name1'}">
+                <items>
+                <ViewSettingsItem key="Name1" text="{Name1}"/>
+                </items>
+            </ViewSettingsFilterItem>
+
+
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

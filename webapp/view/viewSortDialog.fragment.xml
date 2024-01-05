@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="handleSortDialogConfirm"
+        groupDescending="true">
+		<sortItems>
+			<ViewSettingsItem text="Functional Locations" key="FunctionalLocation" selected="true" />
+			<ViewSettingsItem text="Start Date" key="StartUpDate" />
+			
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

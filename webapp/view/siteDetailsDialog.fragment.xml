@@ -1,0 +1,107 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <Dialog
+    class ="siteDialogClass"
+    resizable ="true"
+    draggable ="true"
+    stretch="false"
+    afterClose =".handleSitePartsDialogClose">
+    <beginButton>
+      <Button text="Ok" type="Emphasized" press=".onSitePartsClose" />
+      </beginButton>
+	<Table
+		noDataText="No Parts Found"
+		
+		items="{
+			path : '/SitePartsData',
+			sorter : {
+				path : 'Equipment',
+				descending : false
+			}
+		}">
+		<ColumnListItem>
+			<cells>
+				<ObjectAttribute
+					text="{Equipment}"
+                    active="{path: 'SerialNumber',
+                    formatter: 'com.sagenet.zfunctionallocationlookup.utils.formatter.colorFormatter'}"
+					 />
+                 <!-- <Text text="{path: 'Equipment',
+                    formatter: 'com.sagenet.zfunctionallocationlookup.utils.formatter.changeColorClass'}" />   -->
+				
+                <Text text="{Material}" />
+				<Text text="{EquipmentSystemStatus}" />
+                <Text text="{ERNDescription}" />
+				<!-- <Text text="{MaterialDescription}"/> -->
+				<ObjectNumber
+						number="{Quantity}"
+                        unit="{Uom}"
+						 />
+                <Text text="{SerialNumber}"/>
+                <Text text="{PlannerGroup}"/>
+                <Text text="{PlannerGroupDesc}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column mergeDuplicates="true">
+				<header>
+					<Text text="ERN" />
+				</header>
+			</Column>
+           
+			<Column
+				minScreenWidth="Tablet"  popinDisplay="Inline"
+				demandPopin="true" hAlign="Begin">
+				<header>
+					<Text text="Material" />
+				</header>
+			</Column>
+			<Column
+				
+				hAlign="Begin">
+				<header>
+					<Text text="Status" />
+				</header>
+			</Column>
+             <Column minScreenWidth="Tablet"  popinDisplay="Inline"
+				demandPopin="true">
+				<header>
+					<Text text="Description" />
+				</header>
+			</Column>
+			<!-- <Column
+				minScreenWidth="Desktop"
+				demandPopin="true"  popinDisplay="Inline"
+				hAlign="Begin">
+				<header>
+					<Text text="Material Description" />
+				</header>
+			</Column> -->
+			<Column hAlign="Right" minScreenWidth="Tablet"
+				demandPopin="true"  popinDisplay="Inline">
+				<header>
+					<Text text="Quantity" />
+				</header>
+			</Column>
+            <Column hAlign="End">
+				<header>
+					<Text text="Serial Number" />
+				</header>
+			</Column>
+             <Column hAlign="Center" minScreenWidth="Desktop"
+				demandPopin="true"  popinDisplay="Inline">
+				<header>
+					<Text text="Planner Grp" />
+				</header>
+			</Column>
+             <Column hAlign="Center" minScreenWidth="Desktop"
+				demandPopin="true"  popinDisplay="Inline">
+				<header>
+					<Text text="Planner Grp Description" />
+				</header>
+			</Column>
+		</columns>
+	</Table>
+    </Dialog>
+</core:FragmentDefinition>

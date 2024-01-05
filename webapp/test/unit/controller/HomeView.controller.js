@@ -1,0 +1,1 @@
+sap.ui.define(["comsagenet/z_functional_location_lookup/controller/HomeView.controller"],function(o){"use strict";QUnit.module("HomeView Controller");QUnit.test("I should test the HomeView controller",function(e){var t=new o;t.onInit();e.ok(t)})});

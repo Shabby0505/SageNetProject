@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+    	noDataText="No State Found"
+		id="selectDialogState"
+		title="State"
+		items="{/StateData}"
+        showClearButton="true"
+		search=".onValueHelpSearch"
+        liveChange=".onValueHelpSearch"
+		confirm=".onValueHelpClose"
+		cancel=".onValueHelpClose">
+		<StandardListItem
+			title="{Region}"
+            info ="{RegionDescription}"
+			 />
+         <!-- <core:Item text="{RegionDescription}" key="{Region}"/> -->
+	</SelectDialog>
+</core:FragmentDefinition>

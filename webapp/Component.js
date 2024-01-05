@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/UIComponent","sap/ui/Device","com/sagenet/zfunctionallocationlookup/model/models"],function(e,t,o){"use strict";return e.extend("com.sagenet.zfunctionallocationlookup.Component",{metadata:{manifest:"json"},init:function(){e.prototype.init.apply(this,arguments);this.getRouter().initialize();this.setModel(o.createDeviceModel(),"device")}})});

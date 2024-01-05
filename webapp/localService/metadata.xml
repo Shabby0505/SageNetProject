@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZPS_SITE_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Site" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FunctionalLocation"/>
+                </Key>
+                <Property Name="FunctionalLocation" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Functional loc." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StatusDesc" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Status Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Street" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Street" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="State" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Region" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Postal Code" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StartUpDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Start-up date" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Name1" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Name2" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Name 2" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Name3" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Name 3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name4" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Name 4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TelPhone" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Telephone" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="241" sap:unicode="false" sap:label="E-Mail Address" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SortField" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Sort Field" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <NavigationProperty Name="GetSiteParts" Relationship="ZPS_SITE_SRV.GetSiteParts_Ass" FromRole="FromRole_GetSiteParts_Ass" ToRole="ToRole_GetSiteParts_Ass"/>
+                <NavigationProperty Name="GetSiteCharacteristics" Relationship="ZPS_SITE_SRV.GetSiteCharacteristics_Ass" FromRole="FromRole_GetSiteCharacteristics_Ass" ToRole="ToRole_GetSiteCharacteristics_Ass"/>
+            </EntityType>
+            <EntityType Name="SitePart" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FunctionalLocation"/>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="SerialNumber"/>
+                </Key>
+                <Property Name="FunctionalLocation" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Functional loc." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SerialNumber" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Serial Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uom" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="PlannerGroup" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Planner group" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PlannerGroupDesc" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="PM PlGrp name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreateDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Created on" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ChangeDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Changed on" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="EquipmentSystemStatus" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="System Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EquipmentSystemStatusDesc" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="System Status Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EquipmentUserStatus" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="User Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EquipmentUserStatusDesc" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="User Status Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EquipmentCategory" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Equipment category" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="EquipmentCategoryDesc" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Equipment category description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Equipment" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Equipment" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Line" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Item node" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RMAFlag" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="RMA Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SiteCharacteristic" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FunctionalLocation"/>
+                    <PropertyRef Name="CharName"/>
+                </Key>
+                <Property Name="FunctionalLocation" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Functional location" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CharName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Characteristic Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SrNo" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="Serial No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CharDesc" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Characteristic Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CharValue" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Characteristic Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CharValueDesc" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Characteristic Value Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="GetSiteParts_Ass" sap:content-version="1">
+                <End Type="ZPS_SITE_SRV.Site" Multiplicity="1" Role="FromRole_GetSiteParts_Ass"/>
+                <End Type="ZPS_SITE_SRV.SitePart" Multiplicity="*" Role="ToRole_GetSiteParts_Ass"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_GetSiteParts_Ass">
+                        <PropertyRef Name="FunctionalLocation"/>
+                    </Principal>
+                    <Dependent Role="ToRole_GetSiteParts_Ass">
+                        <PropertyRef Name="FunctionalLocation"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GetSiteCharacteristics_Ass" sap:content-version="1">
+                <End Type="ZPS_SITE_SRV.Site" Multiplicity="1" Role="FromRole_GetSiteCharacteristics_Ass"/>
+                <End Type="ZPS_SITE_SRV.SiteCharacteristic" Multiplicity="*" Role="ToRole_GetSiteCharacteristics_Ass"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_GetSiteCharacteristics_Ass">
+                        <PropertyRef Name="FunctionalLocation"/>
+                    </Principal>
+                    <Dependent Role="ToRole_GetSiteCharacteristics_Ass">
+                        <PropertyRef Name="FunctionalLocation"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZPS_SITE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SiteList" EntityType="ZPS_SITE_SRV.Site" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SitePartsList" EntityType="ZPS_SITE_SRV.SitePart" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SiteCharacteristicsList" EntityType="ZPS_SITE_SRV.SiteCharacteristic" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="GetSiteParts_AssSet" Association="ZPS_SITE_SRV.GetSiteParts_Ass" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SiteList" Role="FromRole_GetSiteParts_Ass"/>
+                    <End EntitySet="SitePartsList" Role="ToRole_GetSiteParts_Ass"/>
+                </AssociationSet>
+                <AssociationSet Name="GetSiteChar_AssSet" Association="ZPS_SITE_SRV.GetSiteCharacteristics_Ass" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SiteList" Role="FromRole_GetSiteCharacteristics_Ass"/>
+                    <End EntitySet="SiteCharacteristicsList" Role="ToRole_GetSiteCharacteristics_Ass"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://fiori.sagenet.com:8000/sap/opu/odata/sap/ZPS_SITE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://fiori.sagenet.com:8000/sap/opu/odata/sap/ZPS_SITE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
